@@ -1,7 +1,9 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
+import Navbar from '@/components/Navbar'
+import AuthContext from '@/context/AuthContext'
 
-const inter = Inter({ subsets: ['latin'] })
+const sans = Open_Sans({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,8 +16,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ko" className={sans.className}>
+      <body className='w-full max-w-screen-xl m-auto overflow-auto'>
+        <AuthContext>
+          <header className='sticky top-0 bg-white z-10 border-b-2 border-gray-200'>
+            <Navbar />
+          </header>
+          <main className='grow'>{children}</main>
+        </AuthContext>
+      </body>
     </html>
   )
 }
