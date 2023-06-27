@@ -67,7 +67,7 @@ export default function Navbar() {
               <Link href={'/new'}>
                 <PlusIcon />
               </Link>
-              <Link href={`/user/${user.username}`}>
+              <Link href={`/user/${user.username}`} className='hidden md:block'>
                 <Avatar image={user.image}/>
               </Link>
             </>

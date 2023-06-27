@@ -1,6 +1,7 @@
 import { User } from '@/model/user';
 import React from 'react'
 import Avatar from './Avatar';
+import GotoTop from './GotoTop';
 
 const hover_class = 'hover:opacity-60 transition-all duration-50'
 
@@ -31,7 +32,7 @@ export default function SideBar({user: {name, username, email, image}}: Props) {
           @Copyright BLUECLIP from BLUECLIPCOMPANY
         </p>
         </div>
-      <button className='fixed bottom-6 right-20 bg-slate-400 text-white p-2 px-3 rounded-full opacity-80'>Go to Top</button>
+      <GotoTop />
     </>
   )
 }

@@ -21,12 +21,12 @@ export default function PostList() {
       }
       { posts &&
         <ul>
-          {posts.map(post => (
+          {posts.map((post, index) => (
             <li 
               key={post.id}
               className='mb-7 border-b hover:border-none'
             >
-              <PostCard post={post}/>
+              <PostCard post={post} priority={ index < 2 }/>
             </li>
           ))}
         </ul>
