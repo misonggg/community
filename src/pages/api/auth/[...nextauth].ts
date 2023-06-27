@@ -25,7 +25,6 @@ export const authOptions: NextAuthOptions = {
 
     // 세션이 만들어질 때
     async session({ session }) {
-      console.log(session);
       const user = session?.user;
       if(user) {
         session.user = {
