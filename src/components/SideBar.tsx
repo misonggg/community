@@ -13,7 +13,7 @@ export default function SideBar({user: {name, username, email, image}}: Props) {
 
   return (
     <>
-      <div className='flex border-2 p-3 py-4 flex-col my-4'>
+      <div className='flex border-2 p-3 py-4 flex-col my-4 bg-white'>
         <div className='flex items-center'>
           {image && <Avatar image={image}/>}
           <div className='ml-3'>

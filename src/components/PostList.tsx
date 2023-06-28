@@ -7,7 +7,7 @@ import PostCard from './PostCard'
 
 export default function PostList() {
   const { data: posts, isLoading: loading } = useSWR<SimplePost[]>('api/posts')
-  console.log('팔로잉목록', posts)
+  // console.log('팔로잉목록', posts)
 
   return (
     <section className='w-full py-6'>

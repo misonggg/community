@@ -26,7 +26,7 @@ import React from 'react'
 export default function ScrollableBar({children}: {children: React.ReactNode}) {
   return (
     <Carousel
-      className="flex md:gap-6 w-full shadow-lg p-2 md:p-4 rounded-lg overflow-x-auto"
+      className="flex md:gap-6 w-full shadow-md p-2 md:p-4 md:rounded-lg overflow-x-auto z-0"
       responsive={responsive}
     >
       {children}

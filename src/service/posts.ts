@@ -26,3 +26,20 @@ export async function getFollowingPostsOf(username: string) {
       posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }))
     );
 }
+
+// 유저별로 포스트불러오는 함수 (id -> route에서 사용됨)
+export async function getPost(id: string) {
+  return client.fetch(
+    `*[_type == "post" && _id == "${id}"][0]{
+      ...,
+      "username": author->username,
+      "userImage": author->image,
+      "image": photo,
+      "title": text,
+      "likes": likes[]->username,
+      comments[] {comment, "username": author->username, "image": author->image},
+      "id":_id,
+      "createdAt":_createdAt 
+    }`
+  ).then(post => ({...post, image: urlFor(post.image)}))
+}

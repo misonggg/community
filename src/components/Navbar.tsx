@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AngleDownIcon from './ui/icons/AngleDownIcon'
 import HomeFillIcon from './ui/icons/HomeFillIcon'
 import AngleUpIcon from './ui/icons/AngleUpIcon'
@@ -25,6 +25,21 @@ export default function Navbar() {
     setIsHomeClicked(!isHomeClicked);
   }
 
+  // 메뉴 토글 (다른 곳을 클릭해도 창이 닫히게 함)
+  const menuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsHomeClicked(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [menuRef.current]); // menuRef.current를 의존성 배열에 추가
+
   return (
     <div className='flex flex-row py-1 items-center z-10'>
       <Link href="/" className='flex items-center shrink-0 mr-6 md:mr-10'>
@@ -32,7 +47,7 @@ export default function Navbar() {
         <ClipIcon />
       </Link>
       <nav className='flex flex-row w-full justify-between items-center'>
-        <div className='flex relative w-32 md:w-40'
+        <div className='flex relative w-32 md:w-40' ref={menuRef}
           onClick={handleHomeClick}>
           <div className={`${hover} flex w-44 items-center cursor-pointer`}>
             <HomeFillIcon/>
@@ -40,7 +55,7 @@ export default function Navbar() {
             {isHomeClicked ? <AngleUpIcon /> : <AngleDownIcon />}
           </div>
           <ul
-          className='flex flex-col absolute bg-white z-20 w-44 top-6 drop-shadow-lg '
+          className='flex flex-col absolute bg-white z-20 w-44 top-6 md:top-12 drop-shadow-lg '
           >
           {isHomeClicked && (
               <>
@@ -53,7 +68,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className='hidden lg:block'>
-          <div className={`border-2 hover:border-blue-500 w-80 flex flex-row items-center px-3 py-2 rounded-full`}>
+          <div className='border-2 hover:border-blue-500 w-80 flex flex-row items-center px-3 py-2 rounded-full'>
             <SearchIcon />
             <input
               className='px-2 text-sm w-full focus:outline-none'
@@ -67,7 +82,7 @@ export default function Navbar() {
               <Link href={'/new'}>
                 <PlusIcon />
               </Link>
-              <Link href={`/user/${user.username}`} className='hidden md:block'>
+              <Link href={`/user/${user.username}`} className='hidden md:block mr-2'>
                 <Avatar image={user.image}/>
               </Link>
             </>

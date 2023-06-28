@@ -20,7 +20,7 @@ export default function FollowingBar() {
   ]
 
   return (
-    <section className='w-full justify-center items-center md:mt-4 mb-2 md:mb-4'>
+    <section className='w-full justify-center items-center md:mt-4 mb-2 md:mb-4 bg-white'>
       { loading ? 
         (<HashLoader
           className='text-center mt-2 flex justify-center'

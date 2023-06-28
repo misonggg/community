@@ -15,8 +15,8 @@ export default async function HomePage() {
   }
 
   return (
-    <section className='w-full p-4 flex flex-col md:flex-row '>
-      <div className='w-full lg:basis-3/4 max-w-[900px] jusity-center min-w-0'>
+    <section className='w-full md:p-4 flex flex-col md:flex-row jusity-center mx-auto'>
+      <div className='w-full lg:basis-3/4 max-w-[900px] jusity-center'>
         <FollowingBar />
         <PostList />
       </div>

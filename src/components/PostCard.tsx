@@ -1,6 +1,7 @@
 import { SimplePost } from '@/model/post'
 import React from 'react'
 import ActionBar from './ActionBar';
+// import ModalPortal from './ui/ModalPortal';
 
 type Props = {
   post: SimplePost;
@@ -9,10 +10,16 @@ type Props = {
 }
 
 export default function PostCard({post}: Props) {
+  // const [openModal, setOpenModal] = useState(false);
 
   return (
-    <article className='flex flex-row w-full items-center justify-center pb-4 md:p-4 border-1 rounded-lg hover:shadow-xl'>
-      <ActionBar post={post}/>
+    <article 
+      className='flex flex-row w-full items-center justify-center pb-6 md:p-4 bg-white border-1 md:rounded-lg hover:shadow-xl'
+      // onClick={()=> setOpenModal(true)}
+    >
+      <ActionBar 
+        post={post}
+      />
     </article>
   )
 }

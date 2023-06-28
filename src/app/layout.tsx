@@ -18,17 +18,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={sans.className}>
-      <body className='w-full max-w-screen-xl m-auto overflow-auto'>
+      <body className='w-full overflow-auto bg-neutral-100'>
         <AuthContext>
           <header className='sticky top-0 bg-white z-10 border-b-2 border-gray-200'>
-            <Navbar />
+            <div className='max-w-screen-xl mx-auto'>
+              <Navbar />
+            </div>
           </header>
-          <main className='w-full flex justify-center min-h-full'>
+          <main className='w-full flex justify-center mx-auto max-w-screen-xl'>
             <SWRConfigContext>
               {children}
             </SWRConfigContext>
           </main>
         </AuthContext>
+        <div id="portal" />
       </body>
     </html>
   )
